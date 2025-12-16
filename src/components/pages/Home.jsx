@@ -263,47 +263,50 @@ function Home() {
       {/* 3. Client Logos Section */}
       <ClientLogos />
 
-      {/* 4. Industries */}
+      {/* 4. Our Industry Experience – card design inspired by MetrixIT */}
       <section
         id="industries"
-        className="border-b border-gray-200 bg-slate-50/60 py-14 sm:py-18"
+        className="bg-slate-950 py-16 sm:py-20"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <header className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-[0.24em] uppercase text-sky-600">
-              Industry experience
-            </p>
-            <h2 className="mt-2 text-xl sm:text-2xl font-semibold text-slate-900">
-              Deep expertise across regulated and high‑growth industries.
-            </h2>
-            <p className="mt-3 text-sm text-slate-600">
-              We understand the nuances of your domain and bring pre‑built
-              accelerators, patterns, and best practices tailored to your
-              vertical.
-            </p>
-          </header>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+            Our Industry Experience
+          </h2>
+          <p className="mt-4 text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            You want a strategic partner to understand your market, but you also
+            need them to understand your industry. We start with a discovery
+            phase to define your distinct brand attributes and benefits. We help
+            you recognise business dynamics, identify shortages, predict
+            opportunities, and connect with customers using deep industry
+            insights.
+          </p>
+        </div>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 text-sm opacity-0 animate-fade-in-up-delay-3">
+        <div className="mt-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 text-sm">
             {[
-              'Banking & Financial',
-              'Travel & Hospitality',
-              'Education',
-              'Energy & Utility',
-              'Government',
-              'Logistics & Warehousing',
-              'Insurance',
-              'Healthcare & Life Science',
-              'Retail & Consumer Goods',
-              'Telecom & Media',
-              'Oil & Gas',
-              'E‑Commerce',
-            ].map((label) => (
+              { label: 'Banking & Financial', icon: '🏦' },
+              { label: 'Travel & Hospitality', icon: '✈️' },
+              { label: 'Education', icon: '🎓' },
+              { label: 'Energy & Utility', icon: '⚡' },
+              { label: 'Government', icon: '🏛️' },
+              { label: 'Logistics & Warehousing', icon: '🚚' },
+              { label: 'Insurance', icon: '🛡️' },
+              { label: 'Healthcare & Life Science', icon: '🩺' },
+              { label: 'Retail & Consumer Goods', icon: '🛍️' },
+              { label: 'Telecom & Media', icon: '📡' },
+              { label: 'Oil & Gas', icon: '⛽' },
+              { label: 'E‑Commerce', icon: '🛒' },
+            ].map((item) => (
               <div
-                key={label}
-                className="group rounded-2xl border border-slate-200 bg-white/80 px-4 py-3 hover:border-sky-500 hover:shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-all duration-200"
+                key={item.label}
+                className="flex items-center gap-4 rounded-2xl bg-white/95 px-5 py-4 shadow-lg shadow-slate-900/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/30 transition duration-200"
               >
-                <p className="font-medium text-slate-900 group-hover:text-sky-700">
-                  {label}
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-xl text-white">
+                  <span aria-hidden="true">{item.icon}</span>
+                </div>
+                <p className="font-semibold text-slate-900 text-left">
+                  {item.label}
                 </p>
               </div>
             ))}
@@ -421,37 +424,8 @@ function Home() {
       {/* 7. Testimonials / Client Feedback (NEW SECTION) */}
       <TestimonialsSection />
 
-      {/* 8. Offices Section (NEW PLACEHOLDER SECTION) */}
-      <OfficesSection />
 
-      {/* 9. Call to action */}
-      <section id="contact" className="py-14 sm:py-18">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-slate-900 px-6 py-10 sm:px-10 sm:py-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 opacity-0 animate-fade-in-up">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-white">
-                Have a project in mind?
-              </h2>
-              <p className="mt-2 text-sm text-slate-300 max-w-md">
-                Let&apos;s explore how PDSA‑style engineering can accelerate
-                your roadmap and de‑risk your next strategic initiative.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-slate-900 shadow-sm hover:bg-slate-100"
-              >
-                Contact us
-              </a>
-              <div className="text-xs text-slate-300">
-                <div>Mon – Fri · 09:00 AM – 05:00 PM</div>
-                <div className="mt-1">USA · India · Remote‑first teams</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
     </main>
   );
 }
