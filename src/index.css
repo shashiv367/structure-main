@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* --- 1. Float Soft (Existing) --- */
+
+@keyframes float-soft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* --- 2. Fade In Up (Existing) --- */
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* --- 3. Word Scroll Animation (NEW for Hero) --- */
+
+@keyframes word-slide {
+  /* Phase 1: Slide In (Start off-screen below) */
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Phase 2: Hold (relative to the full cycle time) */
+  75% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Phase 3: Slide Out (Upwards) */
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+/* --- 4. Background Fade (NEW for Hero) --- */
+
+@keyframes bg-fade {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1; /* Peak opacity */
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --- 5. Logo Marquee Animation (NEW for Client Logos) --- */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves by half the duplicated content width for seamless loop */
+    transform: translateX(-50%); 
+  }
+}
+
+/* --- UTILITY CLASSES --- */
+
+.animate-float-soft {
+  animation: float-soft 10s ease-in-out infinite;
+}
+
+/* Base fade-in-up */
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out forwards;
+}
+
+/* Delayed fade-in-up variants */
+.animate-fade-in-up-delay-1 {
+  animation: fade-in-up 0.8s ease-out 0.08s forwards;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fade-in-up 0.9s ease-out 0.16s forwards;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fade-in-up 1s ease-out 0.24s forwards;
+}
+
+/* Dynamic word slide class */
+.dynamic-word-slide {
+  animation-name: word-slide;
+  animation-timing-function: cubic-bezier(0.8, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  display: block;
+}
+
+/* Background fade class */
+.animate-bg-fade {
+    animation-name: bg-fade;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-duration: 3s; /* Explicitly set animation duration here */
+}
+
+/* Logo Marquee class */
+.logo-marquee-content {
+  display: flex;
+  align-items: center;
+  /* Apply the animation for continuous scrolling */
+  animation: marquee 30s linear infinite; /* 30 seconds for a full loop */
+}
