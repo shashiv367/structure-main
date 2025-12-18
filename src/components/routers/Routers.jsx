@@ -29,9 +29,28 @@ import IndustriesOilGas from '../pages/IndustriesOilGas';
 import IndustriesTravelHospitality from '../pages/IndustriesTravelHospitality';
 import IndustriesECommerce from '../pages/IndustriesECommerce';
 import TechnologiesAI from '../pages/TechnologiesAI';
+import TechnologiesAIRpa from '../pages/TechnologiesAIRpa';
+import TechnologiesAIBlockchain from '../pages/TechnologiesAIBlockchain';
+import TechnologiesAICloudProfessionalServices from '../pages/TechnologiesAICloudProfessionalServices';
+import TechnologiesAIDataAnalytics from '../pages/TechnologiesAIDataAnalytics';
+import TechnologiesAIMobility from '../pages/TechnologiesAIMobility';
+import TechnologiesAIIoT from '../pages/TechnologiesAIIoT';
+import TechnologiesAIAdvancedAnalytics from '../pages/TechnologiesAIAdvancedAnalytics';
 import TechnologiesDevOpsBoxed from '../pages/TechnologiesDevOpsBoxed';
+import TechnologiesDevOpsContinuousIntegration from '../pages/TechnologiesDevOpsContinuousIntegration';
+import TechnologiesDevOpsContinuousDelivery from '../pages/TechnologiesDevOpsContinuousDelivery';
+import TechnologiesDevOpsMicroservices from '../pages/TechnologiesDevOpsMicroservices';
+import TechnologiesDevOpsInfrastructureAsCode from '../pages/TechnologiesDevOpsInfrastructureAsCode';
+import TechnologiesCloudAws from '../pages/TechnologiesCloudAws';
+import TechnologiesCloudAzure from '../pages/TechnologiesCloudAzure';
+import TechnologiesCloudSaas from '../pages/TechnologiesCloudSaas';
+import TechnologiesCloudPaas from '../pages/TechnologiesCloudPaas';
 import TechnologiesCloudComputing from '../pages/TechnologiesCloudComputing';
 import TechnologiesBigdata from '../pages/TechnologiesBigdata';
+import TechnologiesBigdataHadoop from '../pages/TechnologiesBigdataHadoop';
+import TechnologiesBigdataSpark from '../pages/TechnologiesBigdataSpark';
+import TechnologiesBigdataKafka from '../pages/TechnologiesBigdataKafka';
+import TechnologiesBigdataApacheHive from '../pages/TechnologiesBigdataApacheHive';
 import TechnologiesWebDevelopment from '../pages/TechnologiesWebDevelopment';
 import TechnologiesLatestThinking from '../pages/TechnologiesLatestThinking';
 import CareersOverview from '../pages/CareersOverview';
@@ -119,6 +138,77 @@ function Routers() {
 
       {/* Technologies sub-pages */}
       <Route path="/technologies/ai" element={<TechnologiesAI />} />
+      <Route path="/technologies/ai/rpa" element={<TechnologiesAIRpa />} />
+      <Route
+        path="/technologies/ai/blockchain"
+        element={<TechnologiesAIBlockchain />}
+      />
+      <Route
+        path="/technologies/ai/cloud-professional-services"
+        element={<TechnologiesAICloudProfessionalServices />}
+      />
+      <Route
+        path="/technologies/ai/data-analytics"
+        element={<TechnologiesAIDataAnalytics />}
+      />
+      <Route
+        path="/technologies/ai/mobility"
+        element={<TechnologiesAIMobility />}
+      />
+      <Route path="/technologies/ai/iot" element={<TechnologiesAIIoT />} />
+      <Route
+        path="/technologies/ai/advanced-analytics"
+        element={<TechnologiesAIAdvancedAnalytics />}
+      />
+      <Route
+        path="/technologies/devops-boxed/continuous-integration"
+        element={<TechnologiesDevOpsContinuousIntegration />}
+      />
+      <Route
+        path="/technologies/devops-boxed/continuous-delivery"
+        element={<TechnologiesDevOpsContinuousDelivery />}
+      />
+      <Route
+        path="/technologies/devops-boxed/microservices"
+        element={<TechnologiesDevOpsMicroservices />}
+      />
+      <Route
+        path="/technologies/devops-boxed/infrastructure-as-code"
+        element={<TechnologiesDevOpsInfrastructureAsCode />}
+      />
+      <Route
+        path="/technologies/cloud-computing/aws-cloud"
+        element={<TechnologiesCloudAws />}
+      />
+      <Route
+        path="/technologies/cloud-computing/microsoft-azure"
+        element={<TechnologiesCloudAzure />}
+      />
+      <Route
+        path="/technologies/cloud-computing/saas"
+        element={<TechnologiesCloudSaas />}
+      />
+      <Route
+        path="/technologies/cloud-computing/paas"
+        element={<TechnologiesCloudPaas />}
+      />
+      <Route path="/technologies/bigdata" element={<TechnologiesBigdata />} />
+      <Route
+        path="/technologies/bigdata/hadoop"
+        element={<TechnologiesBigdataHadoop />}
+      />
+      <Route
+        path="/technologies/bigdata/spark"
+        element={<TechnologiesBigdataSpark />}
+      />
+      <Route
+        path="/technologies/bigdata/kafka"
+        element={<TechnologiesBigdataKafka />}
+      />
+      <Route
+        path="/technologies/bigdata/apache-hive"
+        element={<TechnologiesBigdataApacheHive />}
+      />
       <Route
         path="/technologies/devops-boxed"
         element={<TechnologiesDevOpsBoxed />}
@@ -127,7 +217,6 @@ function Routers() {
         path="/technologies/cloud-computing"
         element={<TechnologiesCloudComputing />}
       />
-      <Route path="/technologies/bigdata" element={<TechnologiesBigdata />} />
       <Route
         path="/technologies/web-development"
         element={<TechnologiesWebDevelopment />}

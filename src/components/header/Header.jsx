@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png';
 function Header() {
   const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeTechCategory, setActiveTechCategory] = useState('ai');
 
   const navItems = [
     {
@@ -80,14 +81,107 @@ function Header() {
     {
       id: 'technologies',
       label: 'TECHNOLOGIES',
-      type: 'panel',
-      links: [
-        { label: 'Artificial Intelligence - AI', to: '/technologies/ai' },
-        { label: 'DevOps Boxed', to: '/technologies/devops-boxed' },
-        { label: 'Cloud Computing', to: '/technologies/cloud-computing' },
-        { label: 'Bigdata', to: '/technologies/bigdata' },
-        { label: 'Web Development', to: '/technologies/web-development' },
-        { label: 'Latest Thinking', to: '/technologies/latest-thinking' },
+      type: 'mega',
+      categories: [
+        {
+          id: 'ai',
+          label: 'Artificial Intelligence - AI',
+          to: '/technologies/ai',
+          items: [
+            { label: 'RPA', to: '/technologies/ai/rpa' },
+            { label: 'Blockchain', to: '/technologies/ai/blockchain' },
+            {
+              label: 'Cloud Professional Services',
+              to: '/technologies/ai/cloud-professional-services',
+            },
+            { label: 'Data Analytics', to: '/technologies/ai/data-analytics' },
+            { label: 'Mobility', to: '/technologies/ai/mobility' },
+            { label: 'IoT', to: '/technologies/ai/iot' },
+            {
+              label: 'Advanced Analytics',
+              to: '/technologies/ai/advanced-analytics',
+            },
+          ],
+        },
+        {
+          id: 'devops',
+          label: 'DevOps Boxed',
+          to: '/technologies/devops-boxed',
+          items: [
+            {
+              label: 'Continuous Integration',
+              to: '/technologies/devops-boxed/continuous-integration',
+            },
+            {
+              label: 'Continuous Delivery',
+              to: '/technologies/devops-boxed/continuous-delivery',
+            },
+            {
+              label: 'Microservices',
+              to: '/technologies/devops-boxed/microservices',
+            },
+            {
+              label: 'Infrastructure As Code',
+              to: '/technologies/devops-boxed/infrastructure-as-code',
+            },
+          ],
+        },
+        {
+          id: 'cloud',
+          label: 'Cloud Computing',
+          to: '/technologies/cloud-computing',
+          items: [
+            {
+              label: 'AWS Cloud',
+              to: '/technologies/cloud-computing/aws-cloud',
+            },
+            {
+              label: 'Microsoft Azure',
+              to: '/technologies/cloud-computing/microsoft-azure',
+            },
+            {
+              label: 'Saas',
+              to: '/technologies/cloud-computing/saas',
+            },
+            {
+              label: 'Paas',
+              to: '/technologies/cloud-computing/paas',
+            },
+          ],
+        },
+        {
+          id: 'bigdata',
+          label: 'Bigdata',
+          to: '/technologies/bigdata',
+          items: [
+            { label: 'Hadoop', to: '/technologies/bigdata/hadoop' },
+            { label: 'Spark', to: '/technologies/bigdata/spark' },
+            { label: 'Kafka', to: '/technologies/bigdata/kafka' },
+            { label: 'Apache Hive', to: '/technologies/bigdata/apache-hive' },
+          ],
+        },
+        {
+          id: 'webdev',
+          label: 'Web Development',
+          to: '/technologies/web-development',
+          items: [
+            { label: 'Java' },
+            { label: 'PHP' },
+            { label: 'ASP .Net' },
+            { label: 'Web API' },
+            { label: 'MVC' },
+            { label: 'Angularjs' },
+          ],
+        },
+        {
+          id: 'latest',
+          label: 'Latest Thinking',
+          to: '/technologies/latest-thinking',
+          items: [
+            { label: 'Big Data & Analytics' },
+            { label: 'Internet Of Things' },
+          ],
+        },
       ],
     },
     {
@@ -185,6 +279,84 @@ function Header() {
                               </li>
                             ))}
                           </ul>
+                        </div>
+                      )}
+                    </li>
+                  );
+                }
+
+                if (item.type === 'mega') {
+                  const isOpen = openMenu === item.id;
+                  const activeCategory =
+                    item.categories.find((c) => c.id === activeTechCategory) ??
+                    item.categories[0];
+
+                  return (
+                    <li key={item.id} className="relative">
+                      <button
+                        onClick={() => toggleMenu(item.id)}
+                        onMouseEnter={() => setOpenMenu(item.id)}
+                        className="flex items-center gap-1 text-xs font-semibold tracking-[0.16em] uppercase text-slate-900 hover:text-sky-600"
+                      >
+                        {item.label}
+                        <span
+                          className={`text-[10px] transition-transform ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        >
+                          ▾
+                        </span>
+                      </button>
+
+                      {isOpen && (
+                        <div
+                          className="absolute left-0 top-full z-30 mt-2 w-[520px] rounded-none border border-gray-200 bg-white shadow-[0_20px_60px_rgba(15,23,42,0.18)]"
+                          onMouseLeave={() => setOpenMenu(null)}
+                        >
+                          <div className="flex">
+                            {/* Left column: main technology categories */}
+                            <ul className="w-64 border-r border-gray-200 py-3">
+                              {item.categories.map((cat) => {
+                                const isActive = activeCategory.id === cat.id;
+                                return (
+                                  <li key={cat.id}>
+                                    <NavLink
+                                      to={cat.to}
+                                      className={`flex items-center justify-between px-5 py-2.5 text-sm ${
+                                        isActive
+                                          ? 'bg-[#4169E1] text-white'
+                                          : 'text-slate-900 hover:bg-gray-50'
+                                      }`}
+                                      onMouseEnter={() =>
+                                        setActiveTechCategory(cat.id)
+                                      }
+                                    >
+                                      <span>{cat.label}</span>
+                                      <span className="text-xs">›</span>
+                                    </NavLink>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+
+                            {/* Right column: secondary items */}
+                            <ul className="flex-1 py-4 pl-6 pr-5">
+                              {activeCategory.items.map((sub) => {
+                                const targetTo = sub.to ?? activeCategory.to;
+                                return (
+                                  <li key={sub.label} className="py-1.5">
+                                    <NavLink
+                                      to={targetTo}
+                                      className="text-sm text-slate-900 hover:text-sky-600"
+                                      onClick={() => setOpenMenu(null)}
+                                    >
+                                      {sub.label}
+                                    </NavLink>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
                         </div>
                       )}
                     </li>
@@ -292,6 +464,40 @@ function Header() {
                               }
                             >
                               {link.label}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                );
+              }
+
+              if (item.type === 'mega') {
+                return (
+                  <li key={item.id}>
+                    <details className="group">
+                      <summary className="flex cursor-pointer list-none items-center justify-between px-3 py-2 text-sm text-slate-900 hover:bg-gray-50">
+                        <span>{item.label}</span>
+                        <span className="text-xs transition-transform group-open:rotate-180">
+                          ▾
+                        </span>
+                      </summary>
+                      <ul className="border-t border-gray-200 bg-white">
+                        {item.categories.map((cat) => (
+                          <li key={cat.id}>
+                            <NavLink
+                              to={cat.to}
+                              onClick={() => setMobileOpen(false)}
+                              className={({ isActive }) =>
+                                [
+                                  'block px-4 py-2 text-sm text-slate-900',
+                                  'hover:bg-gray-50',
+                                  isActive ? 'bg-gray-50 text-sky-600' : '',
+                                ].join(' ')
+                              }
+                            >
+                              {cat.label}
                             </NavLink>
                           </li>
                         ))}
